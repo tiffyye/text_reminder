@@ -32,7 +32,7 @@ public class textreminder extends Activity{
 
     static final int TIME_DIALOG_ID = 1111;
     private TextView output;
-    private TextView debug;
+
     public Button btnClick;
     public Button btnOn, btnOff;
 
@@ -57,15 +57,12 @@ public class textreminder extends Activity{
 
 
     //private Button deleteMsgBtn;
-    private TextView text;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.textreminder);
 
         output = (TextView) findViewById(R.id.output);
-        debug = (TextView) findViewById(R.id.debug);
         final Calendar c = Calendar.getInstance();
         hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
