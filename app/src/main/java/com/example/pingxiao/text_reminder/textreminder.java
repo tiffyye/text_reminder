@@ -32,6 +32,7 @@ public class textreminder extends Activity{
 
     static final int TIME_DIALOG_ID = 1111;
     private TextView output;
+    private TextView currenttime;
 
     public Button btnClick;
     public Button btnOn, btnOff;
@@ -67,7 +68,9 @@ public class textreminder extends Activity{
         hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
 
-        updateTime(hour, minute);
+        updatecurrentTime(hour, minute);
+        //currenttime = (TextView)findViewById((R.id.currentime));
+        //currenttime.setText(ctime);
 
         addButtonClickListener();
 
@@ -293,6 +296,34 @@ public class textreminder extends Activity{
                 .append(minutes).append(" ").append(timeSet).toString();
 
         output.setText(aTime);
+
+    }
+
+    private void updatecurrentTime(int hours, int mins) {
+
+        String timeSet = "";
+        if (hours > 12) {
+            hours -= 12;
+            timeSet = "PM";
+        } else if (hours == 0) {
+            hours += 12;
+            timeSet = "AM";
+        } else if (hours == 12)
+            timeSet = "PM";
+        else
+            timeSet = "AM";
+
+
+        String minutes = "";
+        if (mins < 10)
+            minutes = "0" + mins;
+        else
+            minutes = String.valueOf(mins);
+
+        String aTime = new StringBuilder().append(hours).append(':')
+                .append(minutes).append(" ").append(timeSet).toString();
+
+        currenttime.setText(aTime);
 
     }
 }
