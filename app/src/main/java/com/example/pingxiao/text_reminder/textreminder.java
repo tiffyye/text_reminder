@@ -68,8 +68,10 @@ public class textreminder extends Activity{
         hour = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
 
+        currenttime = (TextView)findViewById((R.id.currentime));
         updatecurrentTime(hour, minute);
-        //currenttime = (TextView)findViewById((R.id.currentime));
+
+
         //currenttime.setText(ctime);
 
         addButtonClickListener();
@@ -159,9 +161,6 @@ public class textreminder extends Activity{
 
     }
 
-
-
-
     //DO WE NEED TO HAVE ONDESTROY AND ONSTOP
     private void errorExit(String title, String message) {
         Toast msg = Toast.makeText(getBaseContext(),
@@ -214,7 +213,7 @@ public class textreminder extends Activity{
         } catch (IOException e) {
             errorExit("Fatal Error", "In sendData() and output stream creation failed" + e.getMessage() + ".");
         }
-        //Log.d(TAG, "...Sending data" + message + "...");
+        Log.d(TAG, "...Sending data...");
 
         try {
             outStream.write(msgBuffer);
@@ -323,6 +322,7 @@ public class textreminder extends Activity{
         String aTime = new StringBuilder().append(hours).append(':')
                 .append(minutes).append(" ").append(timeSet).toString();
 
+        System.out.println(aTime);
         currenttime.setText(aTime);
 
     }
